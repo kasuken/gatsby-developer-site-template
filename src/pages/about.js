@@ -1,32 +1,31 @@
 import React, { useContext } from "react"
 import { PageLayout, PageTitle } from "../components"
-import { Container, Image } from "react-bootstrap"
+import { Container, Image, Badge } from "react-bootstrap"
 import { Link, graphql } from "gatsby"
 import { ThemeContext, SEO } from "../utils"
 
 export default ({ data }) => {
-  const MediaLink = ({ title, author, link }) => (
-    <li key={title} style={{ color: "gray" }}>
-      <a rel="noopener noreferrer" href={link}>
-        {title}
-      </a>
-      &nbsp;-<i>{author}</i>
-    </li>
+  const MediaLink = ({ name, link }) => (
+    <Badge key={name} pill className="mr-2 p-0 px-3 resume-tags">
+      <h4>
+        <small><a href={link} target="_blank">{name}</a></small>
+      </h4>
+    </Badge>
   )
 
   const {
     author,
     email,
     occupation,
-    readingList,
-    showsList,
+    technlogiesList,
+    toolsList,
     attributes,
     lookingForJobs,
   } = data.site.siteMetadata
   const { toString } = useContext(ThemeContext)
 
-  const bookLinks = readingList.map(book => MediaLink(book))
-  const showLinks = showsList.map(show => MediaLink(show))
+  const technlogies = technlogiesList.map(tech => MediaLink(tech))
+  const tools = toolsList.map(tool => MediaLink(tool))
 
   return (
     <PageLayout>
@@ -49,25 +48,25 @@ export default ({ data }) => {
               </span>
             ))}
           </p>
-          <p className="i-5 mt-4 pt-2">
+          <p className="text-justify">
             Hello there! My name is <b>{`${author}`}</b>. I am a
             &nbsp;
             <b>{occupation}</b> and a forever learner.
           </p>
-          <p>
+          <p className="text-justify">
             Lorem ipsum
             dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim
             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
           </p>
-          <p className="i-5">
+          <p className="text-justify">
             In my spare time, Lorem ipsum dolor sit amet, consectetur adipiscing
             elit, sed do eiusmod tempor incididunt ut labore et dolore magna
             aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
             laboris nisi ut aliquip ex ea commodo consequat.
           </p>
-          <p className="i-5">
+          <p className="v">
             Check out my <Link to="/projects">projects</Link> to see what I've
             been up to! Or check out my <Link to="/blog">blog</Link> to see
             what's recently caught my eye!
@@ -83,7 +82,7 @@ export default ({ data }) => {
                   like what you <Link to="/resume">see</Link>, let's get
                   in&nbsp;
                   <a
-                    href={ `mailto:${email}` }
+                    href={`mailto:${email}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -96,19 +95,13 @@ export default ({ data }) => {
           )}
           <hr />
           <h5 className="watch-list-title pt-4">
-            Here are a couple of books from my reading list:
+            Here are a couple of technologies that I use every day:
           </h5>
-          <ul style={{ fontSize: "0.9rem", listStyle: "none" }}>{bookLinks}</ul>
+          <ul style={{ fontSize: "0.9rem", listStyle: "none" }}>{technlogies}</ul>
           <h5 className="watch-list-title pt-4">
-            Here are a couple of shows from my watch list:
+            Here are a couple of tools that I use every day:
           </h5>
-          <ul style={{ fontSize: "0.9rem", listStyle: "none" }}>{showLinks}</ul>
-          <h5 className="watch-list-title pt-4">
-            Here are a couple of movies from my watch list:
-          </h5>
-          <p>
-            <i>...waaaay too many to list.</i>
-          </p>
+          <ul style={{ fontSize: "0.9rem", listStyle: "none" }}>{tools}</ul>
         </article>
       </Container>
     </PageLayout>
@@ -124,14 +117,12 @@ export const query = graphql`
         occupation
         author
         attributes
-        readingList {
-          title
-          author
+        technlogiesList {
+          name
           link
         }
-        showsList {
-          title
-          author
+        toolsList {
+          name
           link
         }
       }

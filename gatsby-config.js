@@ -56,38 +56,36 @@ module.exports = {
         link: `../../resume.pdf`,
       }
     ],
-    readingList: [
+    technlogiesList: [
       {
-        title: `Sapiens: A Brief History of Humankind`,
-        author: `Yuval Noah Harari`,
-        link: `https://www.goodreads.com/book/show/23692271-sapiens`,
+        name: `React`,
+        link: `https://reactjs.org`,
       },
       {
-        title: `Behave: The Biology of Humans at our Best and Worst`,
-        author: `Robert Sapolsky`,
-        link: `https://www.goodreads.com/book/show/31170723-behave`,
+        name: `ASP.NET Core`,
+        link: `https://www.asp.net`,
       },
       {
-        title: `The Gene: An Intimate History`,
-        author: `Siddhartha Mukeherjee`,
-        link: `https://www.goodreads.com/book/show/27276428-the-gene`,
+        name: `C#`,
+        link: `https://www.dot.net`,
+      },
+      {
+        name: `Python`,
+        link: `https://www.python.org`,
       },
     ],
-    showsList: [
+    toolsList: [
       {
-        title: `Avatar: The Last Airbender`,
-        author: `Micheal DiMartino, Bryan Konietzko`,
-        link: `https://www.imdb.com/title/tt0417299/`,
+        name: `Visual Studio Code`,
+        link: `https://code.visualstudio.com`,
       },
       {
-        title: `Love, Death & Robots`,
-        author: `Tim Miller`,
-        link: `https://www.imdb.com/title/tt9561862/`,
+        name: `Visual Studio 2019`,
+        link: `https://www.visualstudio.com`,
       },
       {
-        title: `Star Wars: The Clone Wars`,
-        author: `George Lucas, Dave Filoni`,
-        link: `https://www.imdb.com/title/tt0458290/`,
+        name: `Postman`,
+        link: `https://www.getpostman.com`,
       },
     ],
   },
